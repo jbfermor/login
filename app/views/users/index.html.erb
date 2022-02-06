@@ -1,0 +1,55 @@
+
+<div class="container-fluid d-flex justify-content-center">
+
+  <div class="col-lg-8 col-md-10 bg-light rounded shadow">
+    <div class="d-flex justify-content-between m-2 p-3 border-bottom">
+      <h2>Usuarios</h2>
+      <%= link_to new_user_path, class: "btn btn-success" do %>
+      <%= fa_icon "plus", text: "Nuevo Usuario" %>
+      <% end %>
+    </div>
+
+    <div id="usuarios" class="col-lg-8 d-block mx-auto m-2 p-3">
+      <table>
+        <thead>
+          <tr>
+            <td>Usuario</td>
+            <td colspan="3">Acciones</td>
+          </tr>
+        </thead>
+        <tbody>
+          <% @users.each do |user| %>
+          <tr>
+            <td><%= user.email %></td>
+            <td>
+              <%= link_to user, class: "btn btn-primary btn-sm" do %>
+                <%= fa_icon "eye", text: " Mostrar" %>
+              <% end %>
+            </td>
+            <td>
+              <%= link_to edit_user_path(user), class: "btn btn-warning btn-sm" do %>
+                <%= fa_icon "exchange", text: " Editar" %>
+              <% end %>
+            </td>
+            <td>
+              <%= button_to users_path(user), method: :delete, class: "btn btn-danger btn-sm" do %>
+                <%= fa_icon "trash", text: " Eliminar" %>
+              <% end %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+
+    <div id="page_navigation">
+      <div class="row m-1 p-2">
+        <%= link_to root_path, class: "btn btn-dark" do %>
+          <%= fa_icon "home", text: " Página Principal" %>
+        <% end %>
+      </div>
+    </div>
+
+  </div>
+</div>
+
